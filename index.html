@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evan Albers</title>
+<meta name="description" content="Research on artificial life, AI, cellular automata and cybernetics.">
+<meta name="color-scheme" content="light dark">
+<script>
+// Apply a saved theme choice before first paint, so the page never flashes the wrong theme.
+try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page" id="top">
+  <canvas id="automaton" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <header class="site-header">
+      <a class="brand panel" href="#top">Evan Albers</a>
+      <div class="header-right">
+        <nav class="panel nav" aria-label="Main">
+          <a href="#research">Research</a>
+          <a href="#writing">Writing</a>
+          <a href="#projects">Projects</a>
+          <a href="#about">About</a>
+        </nav>
+        <button type="button" class="panel btn" id="theme-toggle">Dark mode</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="panel hero-main">
+        <p class="kicker">Artificial life / AI / cellular automata / cybernetics</p>
+        <h1>Simple rules, run long enough, start to look alive.</h1>
+        <p class="lede">I research how local rules add up to systems that compute, adapt and organise themselves, across artificial life, AI, cellular automata and cybernetics.</p>
+        <div class="actions">
+          <a class="cta" href="#research">Read the research</a>
+          <a class="text-link" href="#about">About me</a>
+        </div>
+      </div>
+      <aside class="panel readout" aria-label="Background automaton">
+        <p class="label">Now running behind this page</p>
+        <p class="rule" id="ca-rule">Rule 30</p>
+        <p class="pass" id="ca-pass">pass 1</p>
+        <p class="explain">Each row is one generation of a one-dimensional automaton. When it reaches the bottom of the page it starts again from the top under a new rule.</p>
+        <button type="button" class="btn" id="ca-toggle">Pause</button>
+      </aside>
+    </section>
+
+    <section id="research" class="block">
+      <h2 class="panel tag">Research</h2>
+      <div class="cards">
+        <article class="panel card">
+          <h3>Artificial life</h3>
+          <p>Lifelike behaviour in systems nobody would call alive.</p>
+          <p class="placeholder">[YOUR PROJECT OR PAPER]</p>
+        </article>
+        <article class="panel card">
+          <h3>Artificial intelligence</h3>
+          <p>What learning systems do, and why they do it.</p>
+          <p class="placeholder">[YOUR PROJECT OR PAPER]</p>
+        </article>
+        <article class="panel card">
+          <h3>Cellular automata</h3>
+          <p>Local rules, global structure, and the gap between them.</p>
+          <p class="placeholder">[YOUR PROJECT OR PAPER]</p>
+        </article>
+        <article class="panel card">
+          <h3>Cybernetics</h3>
+          <p>Feedback, control and regulation in machines and organisms.</p>
+          <p class="placeholder">[YOUR PROJECT OR PAPER]</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="writing" class="block narrow">
+      <h2 class="panel tag">Recent writing</h2>
+      <div class="panel list">
+        <a href="#writing"><span>[POST OR PAPER TITLE]</span><span class="date">[DATE]</span></a>
+        <a href="#writing"><span>[POST OR PAPER TITLE]</span><span class="date">[DATE]</span></a>
+        <a href="#writing"><span>[POST OR PAPER TITLE]</span><span class="date">[DATE]</span></a>
+      </div>
+    </section>
+
+    <footer id="about" class="panel site-footer">
+      <span>[YOUR AFFILIATION]</span>
+      <span>[YOUR EMAIL]</span>
+      <span>[GITHUB]</span>
+      <span>[GOOGLE SCHOLAR]</span>
+    </footer>
+  </div>
+</div>
+<script src="automaton.js"></script>
+</body>
+</html>
