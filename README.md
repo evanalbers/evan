@@ -1,14 +1,15 @@
 # Personal site
 
 A static landing page with a cellular automaton running in the background.
+The titles are drawn on the automaton's own grid and flip to reveal a description.
 No build step: GitHub Pages serves these files as they are.
 
 ## Files
 
 - `index.html`: the page and its copy. Replace anything in `[SQUARE BRACKETS]`.
 - `style.css`: layout and both colour themes (light and dark blocks at the top).
-- `automaton.js`: the background automaton and the theme toggle. Cell size, speed
-  and the list of rules are at the top of the file.
+- `automaton.js`: the background automaton, the grid text and the theme toggle.
+  Cell size, speed, flip time and the list of rules are at the top of the file.
 - `.nojekyll`: tells GitHub Pages to serve the files without processing them.
 
 ## Deploy on GitHub Pages
@@ -47,14 +48,35 @@ Then open http://localhost:8000.
 The page follows the device's light or dark setting. The "Dark mode" / "Light mode"
 button overrides it and the choice is remembered in the browser.
 
+## Grid text
+
+Each block of grid text is an element with class `item`:
+
+```html
+<a class="item" href="research.html">
+  <span class="gt" data-scale="1">cellular automata</span>
+  <span class="desc">Ordinary text shown when the tiles flip.</span>
+</a>
+```
+
+- `gt` text is drawn as cells in a small pixel font (lower and upper case, digits and
+  `, . ' - / : ! ? &`), in the case you type it.
+  `data-scale="2"` doubles its size. Long text wraps to fit.
+- `data-font="small"` uses a smaller font (lowercase letters only) and `data-underline`
+  draws a line of cells under the text. Add class `inline` to the `item` to sit several
+  on one line, as the links at the bottom of the page do.
+- `desc` is normal text, hidden until the block is hovered, focused or tapped.
+- At 4px cells a letter is 24px wide, so grid text suits names and titles, not paragraphs.
+- The links currently point at themselves; change each `href` to the page it should open.
+
 ## Using the automaton on other pages
 
 Give each page the same wrapper and include the script:
 
 ```html
-<div class="page">
+<div class="page" id="page">
   <canvas id="automaton" aria-hidden="true"></canvas>
-  <div class="wrap"> ...your content, on .panel elements... </div>
+  <div class="wrap"> ...your content: .item blocks, or normal text on .panel elements... </div>
 </div>
 <script src="automaton.js"></script>
 ```
